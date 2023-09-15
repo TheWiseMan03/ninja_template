@@ -15,7 +15,7 @@ Your application does not need to implement CRUD (Create, Read, Update, Delete) 
 from lib.crud import CRUD_Queryset
 ```
 
-[CRUD_Queryset](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/master/lib/crud.py) - provides asynchronous methods for performing basic operations on model objects, enabling efficient data manipulation. This class will perform all CRUD operations for you. You can see an example of constructing CRUD operations at the following link: [CRUD Example](https://github.com/)
+[CRUD_Queryset](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/master/lib/crud.py) - provides asynchronous methods for performing basic operations on model objects, enabling efficient data manipulation. This class will perform all CRUD operations for you. You can see an example of constructing CRUD operations at the following link: [CRUD Example](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/CREATING_CRUD.md)
 
 
 ## Creating an API
@@ -33,7 +33,7 @@ When creating an API, you must define an asynchronous function called "handler" 
 
 Any parameters you want to pass to the decorator can simply be defined in variables with appropriate names and assigned the desired values.
 
-Please see the API creation examples provided at this link: [Create API](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/tree/master/src/api/candidate)
+Please see the API creation examples provided at this link: [Create API](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/CREATING_API.md)
 
 
 
