@@ -18,7 +18,7 @@ from src.apps.your_app.models import YourModel
 
 
 ```bash
-instance = CRUD_Queryset(YourModel)
+crud_instance = CRUD_Queryset(YourModel)
 ```
 
 You now have a crud_instance that can be used to perform CRUD operations on YourModel model objects.
