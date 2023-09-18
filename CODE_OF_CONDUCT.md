@@ -1,5 +1,6 @@
 # Code of Conduct
 
+#TODO: Features
 
 ## New files for the application should be organized as follows:
 

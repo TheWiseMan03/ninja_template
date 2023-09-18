@@ -1,4 +1,4 @@
-# Создание API
+# Create an API
 
 It is necessary to import [crud_instance](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/CREATING_CRUD.md), the corresponding schemas.
 ```bash
@@ -6,9 +6,7 @@ from src.apps.your_app_name.crud import crud_instance
 ...
 ```
 
-
-
-We create an asynchronous function called handler. We do not use a decorator, but we specify the parameters that are usually passed to the decorator in a variable.
+Create an asynchronous function called handler. Do not use a decorator, but we specify the parameters that are usually passed to the decorator in a variable.
 
 The URL will be automatically generated given the path from the root `api/` to your file.
 ```bash
@@ -20,10 +18,9 @@ auth = ...
 async def handler(request, ...):
     # Add your function logic here.
     ...
-
 ```
 
-# Let's look at an example of using the `create` method from `crud_instance`
+# Example of using the `create` method from `crud_instance`
 
 ```bash
 # Import the necessary modules from your applications
