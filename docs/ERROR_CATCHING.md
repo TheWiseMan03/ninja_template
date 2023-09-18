@@ -1,4 +1,4 @@
-# This function is a wrapper for creating a global error handler for the Ninja API. It accepts an api_instance to which the handler is applied.
+# This function is a wrapper for creating a global error handler for the Ninja API. It accepts an [`api_instance`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/URLS_USAGE_GUIDE.md) to which the handler is applied.
 
 
 ```bash
