@@ -36,7 +36,7 @@ load_api(api)
 
 
 
-api.post("/test")(lambda request: "Hello World!")
+# api.post("/test")(lambda request: "Hello World!")
 
 urlpatterns = [
     path("admin/", admin.site.urls),

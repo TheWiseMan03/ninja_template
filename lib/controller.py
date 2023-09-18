@@ -52,15 +52,15 @@ def load_api(api_instance):
 
 
 
-class ResponseDataSchema(Schema):
-    status: str
-    result: Any
+# class ResponseDataSchema(Schema):
+#     status: str
+#     result: Any
 
-def parse_request(view_function):
-    @wraps(view_function)
-    def wrapper(request, *args, **kwargs):
-        pass
-    return wrapper
+# def parse_request(view_function):
+#     @wraps(view_function)
+#     def wrapper(request, *args, **kwargs):
+#         pass
+#     return wrapper
 
 
 

@@ -40,3 +40,5 @@ delete_all_attendace_stats.py
 logs/*.log
 
 t.py
+
+venv/
