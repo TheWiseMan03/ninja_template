@@ -1,4 +1,4 @@
-# This code is the load_api function, which loads and configures API handlers based on modules imported from the specified directory.
+# This code is the load_api function, which loads and configures API handlers based on modules imported from the [specified directory](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/IMPORT_FOLDER.md).
 
 ```bash
 def load_api(api_instance):

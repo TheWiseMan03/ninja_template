@@ -8,6 +8,8 @@ from src.apps.your_app_name.crud import crud_instance
 
 Create an asynchronous function called handler. Do not use a decorator, but we specify the parameters that are usually passed to the decorator in a variable.
 
+**Please familiarize yourself with the logic of creating a [decorator](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/API_HANDLER.md) for a handler.**
+
 The URL will be automatically generated given the path from the root `api/` to your file.
 ```bash
 
