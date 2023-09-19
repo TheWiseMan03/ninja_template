@@ -10,7 +10,6 @@ This file contains a hierarchical representation of the project's repositories a
 - :file_folder: lib 
 - :file_folder: logs 
 - :file_folder: src 
-- :file_folder: tests 
 
 
  ### ddd
@@ -96,27 +95,3 @@ The `api` directory contains business logic for the `user`, `candidate` applicat
 
 
 The `apps` directory represents individual applications within our project
-
-[^6]: tests
-
-- :open_file_folder: tests
-    - :open_file_folder: api
-        - :open_file_folder: candidate
-            - `test_create.py`
-            - `test_delete.py`
-            - `test_get.py`
-            - `test_list.py`
-            - `test_patch.py`
-        - :open_file_folder: user
-            - `test_login.py`
-            - `test_logout.py`
-    - :open_file_folder: factories
-        - `candidate.py`
-        - `user.py`
-    - :open_file_folder: fixtures
-        - `auth.py`
-        - `candidate.py`
-    - `conftest.py`
-    - `faker.py`
-
-**tests** is used to store modules and files related to testing a software project.
