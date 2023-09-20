@@ -7,13 +7,13 @@
 >3. A module responsible for handling and managing errors to ensure stable operation of the application.
 >4. Custom paginator: Implementation of pagination with the ability to configure parameters for easy navigation through data.
 >5. The ability to filter data according to specified criteria or parameters to get more accurate results.
->6. A mechanism for generating URLs based on named routes, making it easier to manage links and navigate between pages
+>6. A mechanism for generating URLs based on named routes, making it easier to manage endpoints.
 
 ## New files for the application should be organized as follows:
 
 1. The source code of your application is located in the 'src/apps/your_app_name' directory.
 2. The API associated with your application is located inside 'src/api/your_app_name'.
-3. All API-endpoints should be placed inside '/your_app_api/'.
+3. All API-endpoints should be placed inside 'src/api/'.
  
 
 ## CRUD Operations
