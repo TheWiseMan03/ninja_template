@@ -32,7 +32,7 @@
 >
 >3. Since you can use the factory library to create and configure the data, which avoids re-declaring the data for each test, it makes working with data in the database easier. An example of using the factory library can be found at this  [`factory`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/factories/candidate.py).
 >
->In addition, [`automatic generation of URLs`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/conftest.py) for your tests is implemented, taking into account the path to the test file.
+>In addition, [`automatic generation of URLs`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/conftest.py#L41) for your tests is implemented, taking into account the path to the test file.
 
 
 
@@ -42,14 +42,13 @@ import pytest
 
 @pytest.mark.django_db
 def test(auth_client, url_name):
-   url = url_name(__file__)
 
-   response = auth_client.get(url)
+    url = url_name(__file__)
 
-    # Next, you can perform the test using the assert statement.
+    response = auth_client.get(url)
     ...
 ```
 
-[`auth_client`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/conftest.py) and [`url_name`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/conftest.py) are ready-made fixtures. `auth_client` provides authorization-based requests, allowing requests to be made on behalf of an authenticated user. While `url_name` is used to generate URLs based on the path to the current tests file.
+[`auth_client`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/conftest.py#L32) and [`url_name`](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/tests/conftest.py#L41) are ready-made fixtures. `auth_client` provides authorization-based requests, allowing requests to be made on behalf of an authenticated user. While `url_name` is used to generate URLs based on the path to the current tests file.
 
 In other words, auth_client provides authentication when making requests, and `url_name` makes it easy to create URLs given the current context of the file structure.

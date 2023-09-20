@@ -1,18 +1,13 @@
 # Code of Conduct
 
-<!-- #TODO: Features -->
+## Features:
 
-<!-- Аутентификация (auth): Реализация механизма аутентификации для управления доступом пользователей к ресурсам проекта.
-
-Логгирование (logger): Возможность записи и анализа логов для отслеживания действий и событий в приложении.
-
-Обработчик ошибок (error handler): Модуль, отвечающий за обработку и управление ошибками, чтобы обеспечить стабильную работу приложения.
-
-Пользовательский пагинатор (custom paginator): Реализация пагинации с возможностью настройки параметров для удобной навигации по данным.
-
-Фильтрация (filtering): Возможность фильтрации данных согласно заданным критериям или параметрам, чтобы получить более точные результаты.
-
-Обратные имена URL (reverse URL names): Механизм для генерации URL-адресов на основе именованных маршрутов, облегчающий управление ссылками и переходы между страницами. -->
+>1. Implementation of an authentication mechanism to control user access to project resources.
+>2. The ability to record and analyze logs to track actions and events in the application.
+>3. A module responsible for handling and managing errors to ensure stable operation of the application.
+>4. Custom paginator: Implementation of pagination with the ability to configure parameters for easy navigation through data.
+>5. The ability to filter data according to specified criteria or parameters to get more accurate results.
+>6. A mechanism for generating URLs based on named routes, making it easier to manage links and navigate between pages
 
 ## New files for the application should be organized as follows:
 
