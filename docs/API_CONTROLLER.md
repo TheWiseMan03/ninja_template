@@ -22,6 +22,7 @@ def load_api(api_instance):
         handler_method = module_instance.handler  # Get the handler method from the module
 
         # 6. Add an API handler using the transferred API instance
+        # 7. You have the ability to set global settings for your API-endpoints inside post().
         api_instance.post(
             endpoint_path,
             response=getattr(module_instance, 'response', NOT_SET),
@@ -40,6 +41,7 @@ def load_api(api_instance):
             openapi_extra=getattr(module_instance, 'openapi_extra', None),
         )(handler_method)
 ```
+
 
 ### The code loads modules from the specified directory, and for each module:
 
