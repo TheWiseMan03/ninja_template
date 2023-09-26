@@ -1,3 +1,11 @@
+## Documentation reading steps:
+
+1. [CODE_OF_CONDUCT.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/CODE_OF_CONDUCT.md)
+2. [PROJECT_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/PROJECT_STRUCTURE.md)
+3. [API_CONTROLLER.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/API_CONTROLLER.md)
+4. [TESTS_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/TESTS_STRUCTURE.md)
+5. [AUTH_INTEGRATION.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/AUTH_INTEGRATION.md)
+
 # Running the App
 
 Follow these steps to run the Django app on your local machine:
@@ -48,10 +56,3 @@ python manage.py runserver
 pytest
 ```
 
-## Documentation reading steps:
-
-1. [CODE_OF_CONDUCT.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/CODE_OF_CONDUCT.md)
-2. [PROJECT_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/PROJECT_STRUCTURE.md)
-3. [API_CONTROLLER.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/API_CONTROLLER.md)
-4. [TESTS_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/TESTS_STRUCTURE.md)
-5. [AUTH_INTEGRATION.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/AUTH_INTEGRATION.md)
