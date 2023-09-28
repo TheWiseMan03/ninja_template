@@ -17,7 +17,6 @@ async def handler(
 ):
     filter_args = filters.dict(exclude_unset=True)
 
-    5 / 0
 
     qs = crud_instance.Model.objects.filter(**filter_args)
 

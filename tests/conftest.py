@@ -43,20 +43,28 @@ def url_name():
     return lambda file_name: reverse_lazy(URL_NAMESPACE + ":" + file_name.partition('tests')[2].replace('/', '.').replace('.py', '').replace('test_', '')[1:])
 
 
-@pytest.fixture
-def created_user(user_factory):
-    user_data = user_factory.build()
-    user = User.objects.create_user(username=user_data.username, email=user_data.email, password=user_data.password)
-    user.raw_password = user_data.password
-    return user
+# @pytest.fixture
+# def created_user(user_factory):
+#     user_data = user_factory.build()
+#     user = User.objects.create_user(username=user_data.username, email=user_data.email, password=user_data.password)
+#     user.raw_password = user_data.password
+#     user.is_staff = True
+#     user.is_superuser = True
+#     user.save()
+#
+#     return user
 
 
 @pytest.fixture
 def created_user(user_factory):
     user_data = user_factory.build()
-    user = User.objects.create_user(username=user_data.username, email=user_data.email, password=user_data.password)
+    user = User.objects.create_user(username='as', email=user_data.email, password=user_data.password)
     user.raw_password = user_data.password
+    user.is_staff = True
+    user.is_superuser = True
+    user.save()
     return user
+
 
 @pytest.fixture
 def login(client, url_name, created_user):
