@@ -15,7 +15,6 @@ def test_create(auth_client, url_name):
     result = response.json()['data']
 
     assert response.status_code == 201
-
     assert result['name'] == payload['name']
     assert result['surname'] == payload['surname']
 

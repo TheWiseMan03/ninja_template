@@ -2,12 +2,14 @@ from lib.paginator import paginate_response
 from src.apps.candidate.filters.candidate import CandidateFilter
 from src.apps.candidate.schemas.candidate import CandidateSchema, PaginatedCandidateSchema
 from src.apps.candidate.services.crud import crud_instance
+from lib.permissions import IsAdmin, ReadOnly, IsNameStartsWithA, IsAuthenticated, IsEmailStartsWithA
 
 from ninja import Query
 
 response = PaginatedCandidateSchema
 
-auth = None
+
+permissions = [(IsNameStartsWithA & IsAuthenticated )]
 
 async def handler(
     request, 
