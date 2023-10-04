@@ -50,14 +50,6 @@ def created_user(user_factory):
     user.raw_password = user_data.password
     return user
 
-
-@pytest.fixture
-def created_user(user_factory):
-    user_data = user_factory.build()
-    user = User.objects.create_user(username=user_data.username, email=user_data.email, password=user_data.password)
-    user.raw_password = user_data.password
-    return user
-
 @pytest.fixture
 def login(client, url_name, created_user):
     payload = dict(
