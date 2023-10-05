@@ -1,28 +1,4 @@
-from ninja_jwt.authentication import AsyncJWTAuth
-from .logger import logger
-from ninja.errors import HttpError
-
-
-class CustomAsyncJWTAuth(AsyncJWTAuth):
-    def __init__(self, permissions, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.permissions = permissions
-
-    async def authenticate(self, request, token):
-        user = await super().authenticate(request, token)
-        if self.permissions:
-            self.check_permissions(request, user)
-        return user
-
-    def check_permissions(self, request, user):
-        for permission in self.get_permissions():
-            if not permission.check(request, user):
-                raise HttpError(403, 'Not allowed to do this operation')
-        return True
-
-    def get_permissions(self):
-        return [permission() for permission in self.permissions]
-
+from rest_framework import permissions
 
 class OperationHolderMixin:
 
@@ -67,8 +43,8 @@ class AND:
         self.perm_1 = perm_1
         self.perm_2 = perm_2
 
-    def check(self, request, user):
-        return self.perm_1.check(request, user) and self.perm_2.check(request, user)
+    def has_permission(self, request, user):
+        return self.perm_1.has_permission(request, user) and self.perm_2.has_permission(request, user)
 
 
 class OR:
@@ -76,60 +52,13 @@ class OR:
         self.perm_1 = perm_1
         self.perm_2 = perm_2
 
-    def check(self, request, user):
-        return self.perm_1.check(request, user) or self.perm_2.check(request, user)
+    def has_permission(self, request, user):
+        return self.perm_1.has_permission(request, user) or self.perm_2.has_permission(request, user)
 
 
 class NOT:
     def __init__(self, perm):
         self.perm = perm
 
-    def check(self, request, user):
-        return not self.perm.check(request, user)
-
-
-class BasePermissionMetaclass(OperationHolderMixin, type):
-    pass
-
-
-class BasePermission(metaclass=BasePermissionMetaclass):
-    def check(self, request, user):
-        return True
-
-
-class IsAdmin(BasePermission):
-
-    @staticmethod
-    def check(request, user):
-        if user:
-            return user.is_staff
-        else:
-            return False
-
-
-class ReadOnly(BasePermission):
-
-    @staticmethod
-    def check(request, user):
-        return request.method == 'GET'
-
-
-class IsNameStartsWithA(BasePermission):
-
-    @staticmethod
-    def check(request, user):
-        return user.username.startswith('a')
-
-
-class IsAuthenticated(BasePermission):
-
-    @staticmethod
-    def check(request, user):
-        return user.is_authenticated
-
-
-class IsEmailStartsWithA(BasePermission):
-
-    @staticmethod
-    def check(request, user):
-        return user.email.startswith('a')
+    def has_permission(self, request, user):
+        return not self.perm.has_permission(request, user)

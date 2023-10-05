@@ -1,9 +1,9 @@
 from src.apps.candidate.services.crud import crud_instance
 from src.apps.candidate.schemas import CandidateSchema, CreateCandidateSchema
-from lib.permissions import IsAdmin, ReadOnly, IsNameStartsWithA, IsAuthenticated, IsEmailStartsWithA
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 response = { 201: CandidateSchema }
-permissions = [IsNameStartsWithA & IsAuthenticated & ~ IsEmailStartsWithA]
+permissions = [IsAuthenticated ]
 
 
 async def handler(request, payload: CreateCandidateSchema):

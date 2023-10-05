@@ -15,7 +15,8 @@ from ninja.pagination import paginate, PaginationBase
 # todo: add reverse url names
 
 from ninja_jwt.authentication import AsyncJWTAuth
-from .permissions import CustomAsyncJWTAuth
+from .auth import CustomAsyncJWTAuth
+
 
 def load_api(api_instance):
     
