@@ -62,3 +62,19 @@ class NOT:
 
     def has_permission(self, request, user):
         return not self.perm.has_permission(request, user)
+
+
+class BasePermissionMetaclass(OperationHolderMixin, type):
+    pass
+
+
+class BasePermission(metaclass=BasePermissionMetaclass):
+    """
+    A base class from which all permission classes should inherit.
+    """
+
+    def has_permission(self, request, user):
+        """
+        Return `True` if permission is granted, `False` otherwise.
+        """
+        return True
