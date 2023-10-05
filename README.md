@@ -5,6 +5,7 @@
 3. [API_CONTROLLER.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/API_CONTROLLER.md)
 4. [TESTS_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/TESTS_STRUCTURE.md)
 5. [AUTH_INTEGRATION.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/AUTH_INTEGRATION.md)
+6. [PERMISSIONS.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/feature/docs/PERMISSIONS.md)
 
 # Running the App
 
