@@ -58,7 +58,7 @@ def url_name():
 @pytest.fixture
 def created_user(user_factory):
     user_data = user_factory.build()
-    user = User.objects.create_user(username='as', email='b@gmail.com', password=user_data.password)
+    user = User.objects.create_user(username='aaa', email='b@gmail.com', password=user_data.password)
     user.raw_password = user_data.password
     user.is_staff = True
     user.is_superuser = True
