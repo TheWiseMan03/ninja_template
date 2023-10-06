@@ -22,8 +22,6 @@ async def handler(
 ):
     filter_args = filters.dict(exclude_unset=True)
 
-    qs = crud_instance.Model.objects.filter(**filter_args)
+    qs = await crud_instance.get_list(**filter_args)
 
     return await paginate_response(qs, CandidateSchema, page, size)
-
-    # return await crud_instance.get_list()
