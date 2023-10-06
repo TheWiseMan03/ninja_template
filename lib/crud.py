@@ -9,7 +9,7 @@ class CRUD_Queryset:
         return await self.Model.objects.aget(pk=pk)
 
     async def get_list(self, conditions: dict = {}):
-        return await sync_to_async(list)(self.Model.objects.filter(**conditions))
+        return await sync_to_async(self.Model.objects.filter)(**conditions)
 
     async def create(self, data_dict: dict = {}):
         return await self.Model.objects.acreate(**data_dict)
