@@ -60,7 +60,6 @@ def created_user(user_factory):
     user.save()
     return user
 
-
 @pytest.fixture
 def login(client, url_name, created_user):
     payload = dict(
