@@ -1,5 +1,3 @@
-
-
 from lib.paginator import get_max_pages
 
 

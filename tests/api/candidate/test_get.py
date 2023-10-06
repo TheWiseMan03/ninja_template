@@ -9,12 +9,11 @@ def test_get(auth_client, url_name, candidate_factory):
         id=candidate.id,
     )
     url = url_name(__file__)
-    
+
     response = auth_client.post(url, payload)
 
-    result = response.json()['data']
+    result = response.json()["data"]
 
     assert response.status_code == 200
-    assert result['id'] == payload['id']
-    assert result['name'] == candidate.name
-
+    assert result["id"] == payload["id"]
+    assert result["name"] == candidate.name

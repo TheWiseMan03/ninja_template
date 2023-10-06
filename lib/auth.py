@@ -20,6 +20,5 @@ class CustomAsyncJWTAuth(AsyncJWTAuth):
     def check_permissions(self, request, user):
         for permission in self.get_permissions():
             if not permission.has_permission(request, user):
-                raise HttpError(403, 'Not allowed to do this operation')
+                raise HttpError(403, "Not allowed to do this operation")
         return True
-

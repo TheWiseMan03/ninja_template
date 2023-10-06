@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # Third Party Apps
-    'rest_framework',
     'ninja_jwt',
     'ninja_jwt.token_blacklist',
 

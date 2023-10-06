@@ -1,12 +1,15 @@
-from rest_framework import permissions
-
 class OperationHolderMixin:
-
     def __and__(self, other):
-        return OperandHAndler(AND, self, other)
+        return OperandHolder(AND, self, other)
 
     def __or__(self, other):
-        return OperandHAndler(OR, self, other)
+        return OperandHolder(OR, self, other)
+
+    def __rand__(self, other):
+        return OperandHolder(AND, other, self)
+
+    def __ror__(self, other):
+        return OperandHolder(OR, other, self)
 
     def __invert__(self):
         return SingleOperandHolder(NOT, self)
@@ -22,7 +25,7 @@ class SingleOperandHolder(OperationHolderMixin):
         return self.operator_type(perm)
 
 
-class OperandHAndler(OperationHolderMixin):
+class OperandHolder(OperationHolderMixin):
     def __init__(self, operation_type, perm1, perm2):
         self.operation_type = operation_type
         self.perm1_class = perm1
@@ -33,9 +36,13 @@ class OperandHAndler(OperationHolderMixin):
         perm2 = self.perm2_class(*args, **kwargs)
         return self.operation_type(perm1, perm2)
 
-    # def check(self, request, user, *args, **kwargs):
-    #     operation = self.operation_type(self.perm1, self.perm2)
-    #     operation.check(request, user)
+    def __eq__(self, other):
+        return (
+            isinstance(other, OperandHolder)
+            and self.operation_type == other.operation_type
+            and self.perm1_class == other.perm1_class
+            and self.perm2_class == other.perm2_class
+        )
 
 
 class AND:
@@ -44,7 +51,9 @@ class AND:
         self.perm_2 = perm_2
 
     def has_permission(self, request, user):
-        return self.perm_1.has_permission(request, user) and self.perm_2.has_permission(request, user)
+        return self.perm_1.has_permission(request, user) and self.perm_2.has_permission(
+            request, user
+        )
 
 
 class OR:
@@ -53,7 +62,9 @@ class OR:
         self.perm_2 = perm_2
 
     def has_permission(self, request, user):
-        return self.perm_1.has_permission(request, user) or self.perm_2.has_permission(request, user)
+        return self.perm_1.has_permission(request, user) or self.perm_2.has_permission(
+            request, user
+        )
 
 
 class NOT:

@@ -1,13 +1,19 @@
 from asgiref.sync import sync_to_async
 
+
 @sync_to_async
-def paginate_response(queryset, Schema, page: int = 1, size: int = 10, ordering: list = ['-id']):
+def paginate_response(
+    queryset, Schema, page: int = 1, size: int = 10, ordering: list = ["-id"]
+):
     offset = (page - 1) * size
     limit = size
 
-    items = [ Schema.from_orm(item) for item in queryset.order_by(*ordering)[offset:offset+limit]]
+    items = [
+        Schema.from_orm(item)
+        for item in queryset.order_by(*ordering)[offset : offset + limit]
+    ]
     total = queryset.count()
-    
+
     return {
         "items": items,
         "total": total,
