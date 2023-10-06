@@ -1,5 +1,3 @@
-
-
 from django.contrib.auth import authenticate
 from ninja.errors import ValidationError
 from src.apps.user.schemas.login import LoginResponseSchema, LoginSchema
@@ -13,9 +11,11 @@ auth = None
 
 
 async def handler(request, payload: LoginSchema):
-    user = await sync_to_async(authenticate)(request, username=payload.username, password=payload.password)
+    user = await sync_to_async(authenticate)(
+        request, username=payload.username, password=payload.password
+    )
 
     if user is None:
         raise ValidationError("Invalid username or password")
-    
+
     return await sync_to_async(get_tokens_for_user)(user)

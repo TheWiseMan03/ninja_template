@@ -5,17 +5,19 @@ from django.test import Client
 
 from pytest_factoryboy import register
 from ddd.urls import URL_NAMESPACE
-from tests.factories.candidate import CandidateFactory
-from tests.factories.user import UserFactory
+from tests.factories import CandidateFactory
+from tests.factories import RelationFactory
+from tests.factories import UserFactory
 
 from django.contrib.auth.models import User
 
 register(CandidateFactory)
 register(UserFactory)
+register(RelationFactory)
 
 
+DEFAULT_CONTENT_TYPE = "application/json"
 
-DEFAULT_CONTENT_TYPE = 'application/json'
 
 class APIClient(Client):
     def post(self, path, data=None, content_type=DEFAULT_CONTENT_TYPE, **extra):
@@ -31,23 +33,31 @@ def client():
 
 @pytest.fixture
 def auth_client(login):
-    return APIClient(
-        headers={
-            "Authorization": f"Bearer {login['access']}"
-        }
-    )
+    return APIClient(headers={"Authorization": f"Bearer {login['access']}"})
 
 
 @pytest.fixture
 def url_name():
-    return lambda file_name: reverse_lazy(URL_NAMESPACE + ":" + file_name.partition('tests')[2].replace('/', '.').replace('.py', '').replace('test_', '')[1:])
+    return lambda file_name: reverse_lazy(
+        URL_NAMESPACE
+        + ":"
+        + file_name.partition("tests")[2]
+        .replace("/", ".")
+        .replace(".py", "")
+        .replace("test_", "")[1:]
+    )
 
 
 @pytest.fixture
 def created_user(user_factory):
     user_data = user_factory.build()
-    user = User.objects.create_user(username=user_data.username, email=user_data.email, password=user_data.password)
+    user = User.objects.create_user(
+        username="aaa", email="b@gmail.com", password=user_data.password
+    )
     user.raw_password = user_data.password
+    user.is_staff = True
+    user.is_superuser = True
+    user.save()
     return user
 
 @pytest.fixture
@@ -58,4 +68,4 @@ def login(client, url_name, created_user):
     )
     response = client.post("/api/user/login/", payload)
 
-    return response.json()['data']
+    return response.json()["data"]

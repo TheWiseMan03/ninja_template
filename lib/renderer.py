@@ -1,6 +1,7 @@
 import orjson
 from ninja.renderers import BaseRenderer
 
+
 class ORJSONRenderer(BaseRenderer):
     media_type = "application/json"
 

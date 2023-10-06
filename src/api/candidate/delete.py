@@ -1,7 +1,5 @@
-
 from src.apps.candidate.schemas.candidate import IdCandidateSchema
 from src.apps.candidate.services.crud import crud_instance
-
 
 
 async def handler(request, payload: IdCandidateSchema):
@@ -10,4 +8,5 @@ async def handler(request, payload: IdCandidateSchema):
 
     return 204, None
 
-response = { 204: None }
+
+response = {204: None}

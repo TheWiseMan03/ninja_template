@@ -1,4 +1,4 @@
-import pytest, json
+import pytest
 
 
 @pytest.mark.django_db
@@ -12,10 +12,8 @@ def test_create(auth_client, url_name):
 
     response = auth_client.post(url, payload)
 
-    result = response.json()['data']
+    result = response.json()["data"]
 
     assert response.status_code == 201
-
-    assert result['name'] == payload['name']
-    assert result['surname'] == payload['surname']
-
+    assert result["name"] == payload["name"]
+    assert result["surname"] == payload["surname"]
