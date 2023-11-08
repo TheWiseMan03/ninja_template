@@ -6,7 +6,7 @@ from lib.logger import logger
 def catch_errors(api_instance):
     @api_instance.exception_handler(Exception)
     def global_error_handler(request, exc):
-
+        
         status = 500
 
         if isinstance(exc, ninja_jwt.exceptions.TokenError):

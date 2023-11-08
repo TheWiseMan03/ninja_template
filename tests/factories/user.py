@@ -2,13 +2,13 @@ import factory
 
 from tests.faker import fake
 
-from django.contrib.auth.models import User
+from src.apps.user.models import CustomUser
 
 
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = User
+        model = CustomUser
 
-    username = fake.name()
+    email = factory.Faker('email')
+    username = fake.user_name()
     password = fake.password()
-    email = fake.email()

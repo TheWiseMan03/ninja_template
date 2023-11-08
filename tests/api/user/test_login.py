@@ -1,20 +1,22 @@
 import pytest
 
-from django.contrib.auth.models import User
+from src.apps.user.models import CustomUser
 
 
 @pytest.mark.django_db
-def test_login(client, url_name, created_user):
-
+def test_login(client, url_name, user_factory):
     payload = dict(
-        username=created_user.username,
-        password=created_user.raw_password,
-    )
+        username=user_factory.username,
+        password=user_factory.password)
+    
+    print(payload)
 
     url = url_name(__file__)
     response = client.post(url, payload)
+    print(response.json())
 
     result = response.json()["data"]
+    
 
     assert response.status_code == 200
 

@@ -1,4 +1,5 @@
 from django.urls import reverse_lazy
+from src.apps.user.models import CustomUser
 import pytest, json
 
 from django.test import Client
@@ -9,7 +10,7 @@ from tests.factories import CandidateFactory
 from tests.factories import RelationFactory
 from tests.factories import UserFactory
 
-from django.contrib.auth.models import User
+from src.apps.user.models import CustomUser
 
 register(CandidateFactory)
 register(UserFactory)
@@ -50,14 +51,12 @@ def url_name():
 
 @pytest.fixture
 def created_user(user_factory):
-    user_data = user_factory.build()
-    user = User.objects.create_user(
-        username="aaa", email="b@gmail.com", password=user_data.password
-    )
-    user.raw_password = user_data.password
-    user.is_staff = True
-    user.is_superuser = True
+    user = user_factory.create()
+    user.set_password = user_factory.password
+    user.raw_password = user_factory.password
+    # user = CustomUser.objects.create_user(username="test", password="test", email="test@gmail.com")
     user.save()
+    
     return user
 
 @pytest.fixture
