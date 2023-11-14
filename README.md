@@ -1,11 +1,11 @@
 ## Documentation reading steps:
 
-1. [CODE_OF_CONDUCT.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/CODE_OF_CONDUCT.md)
-2. [PROJECT_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/PROJECT_STRUCTURE.md)
-3. [API_CONTROLLER.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/API_CONTROLLER.md)
-4. [TESTS_STRUCTURE.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/TESTS_STRUCTURE.md)
-5. [AUTH_INTEGRATION.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/docs/docs/AUTH_INTEGRATION.md)
-6. [PERMISSIONS.md](https://git.unicon.uz/j.rabbimov/django-ninja-template/-/blob/feature/docs/PERMISSIONS.md)
+1. [CODE_OF_CONDUCT.md](https://github.com/TheWiseMan03/ninja_template/blob/master/docs/CODE_OF_CONDUCT.md)
+2. [PROJECT_STRUCTURE.md](https://github.com/TheWiseMan03/ninja_template/blob/master/docs/PROJECT_STRUCTURE.md)
+3. [API_CONTROLLER.md](https://github.com/TheWiseMan03/ninja_template/blob/master/docs/API_CONTROLLER.md)
+4. [TESTS_STRUCTURE.md](https://github.com/TheWiseMan03/ninja_template/blob/master/docs/TESTS_STRUCTURE.md)
+5. [AUTH_INTEGRATION.md](https://github.com/TheWiseMan03/ninja_template/blob/master/docs/AUTH_INTEGRATION.md)
+6. [PERMISSIONS.md](https://github.com/TheWiseMan03/ninja_template/blob/master/docs/PERMISSIONS.md)
 
 # Running the App
 
