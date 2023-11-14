@@ -10,7 +10,6 @@ def test_patch(auth_client, url_name, movie_factory, actor_factory):
     url = url_name(__file__)
 
     response = auth_client.post(url, payload)
-    print(response.content)
 
     result = response.json()["data"]
 

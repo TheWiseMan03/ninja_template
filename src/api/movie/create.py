@@ -13,11 +13,10 @@ async def handler(request, data: CreateMovieSchema):
     genres = data.pop("genres_id", [])
 
     movie = await crud_instance_movie.create(data)
-    await sync_to_async(movie.directors.set)(directors)
-    await sync_to_async(movie.actors.set)(actors)
-    await sync_to_async(movie.genres.set)(genres)    
-    movie = await Movie.objects.prefetch_related("directors", "actors", "genres").aget(pk=movie.pk)
-    print(movie)
+    await movie.directors.aset(directors)
+    await movie.actors.aset(actors)
+    await movie.genres.aset(genres)
     await movie.asave()
+    movie = await Movie.objects.prefetch_related("directors", "actors", "genres").aget(pk=movie.pk)
 
     return 201, movie

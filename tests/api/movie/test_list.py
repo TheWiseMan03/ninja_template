@@ -8,7 +8,6 @@ def test_list(auth_client, url_name, movie_factory):
     url = url_name(__file__)
     filters = {'category_name': 'Action'}
     response = auth_client.post(url, params={'filters': filters})
-    print(response.content)
 
     result = response.json()["data"]["items"]
 

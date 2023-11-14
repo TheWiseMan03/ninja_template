@@ -19,10 +19,6 @@ async def handler(
     page: int = 1,
     size: int = 10,
 ):
-    """
-    movie list api
-    
-    """
     filter_args = filters.dict(exclude_unset=True)
 
     qs = await crud_instance_movie.get_list(**filter_args)
