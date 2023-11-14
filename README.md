@@ -21,8 +21,8 @@ Follow these steps to run the Django app on your local machine:
 
 1. Clone the repository:
 ```bash
-git clone git@git.unicon.uz:j.rabbimov/django-ninja-template.git  
-cd django-ninja-template
+git clone https://github.com/TheWiseMan03/ninja_template.git
+cd ninja_template
 ```
 
 2. Create a virtual environment:
