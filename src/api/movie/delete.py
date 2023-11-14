@@ -1,10 +1,11 @@
 from src.apps.movie.schemas.movie import IdMovieSchema
-from src.apps.movie.services.crud import crud_instance
+from src.apps.movie.services.crud import crud_instance_movie
 
+
+response = {204: None}
 
 async def handler(request, payload: IdMovieSchema):
-    pass
-    # movie = await crud_instance.read(payload.id)
-    # await crud_instance.delete(movie)
+    movie = await crud_instance_movie.read(payload.id)
+    await crud_instance_movie.delete(movie)
 
-    # return 204
+    return 204, None

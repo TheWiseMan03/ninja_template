@@ -1,5 +1,5 @@
 from lib.crud import CRUD_Queryset
 
-from src.apps.movie.models import movie
+from src.apps.movie.models import Movie
 
-crud_instance = CRUD_Queryset(movie)
+crud_instance_movie = CRUD_Queryset(Movie)

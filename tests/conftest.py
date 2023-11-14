@@ -6,15 +6,20 @@ from django.test import Client
 
 from pytest_factoryboy import register
 from ddd.urls import URL_NAMESPACE
-from tests.factories import CandidateFactory
-from tests.factories import RelationFactory
-from tests.factories import UserFactory
+from tests.factories import (
+    CandidateFactory, 
+    MovieFactory, 
+    RelationFactory,
+    ActorFactory,
+    )
 
 from src.apps.user.models import CustomUser
+from src.apps.movie.models import Category, Actor, Genre, Movie
 
 register(CandidateFactory)
-register(UserFactory)
 register(RelationFactory)
+register(MovieFactory)
+register(ActorFactory)
 
 
 DEFAULT_CONTENT_TYPE = "application/json"
@@ -50,11 +55,8 @@ def url_name():
 
 
 @pytest.fixture
-def created_user(user_factory):
-    user = user_factory.create()
-    user.set_password = user_factory.password
-    user.raw_password = user_factory.password
-    # user = CustomUser.objects.create_user(username="test", password="test", email="test@gmail.com")
+def created_user():
+    user = CustomUser.objects.create_user(username="test", password="test", email="test@gmail.com")
     user.save()
     
     return user
@@ -63,8 +65,56 @@ def created_user(user_factory):
 def login(client, url_name, created_user):
     payload = dict(
         username=created_user.username,
-        password=created_user.raw_password,
+        password="test",
     )
     response = client.post("/api/user/login/", payload)
 
     return response.json()["data"]
+
+@pytest.fixture
+def foreign_keys_handling():
+    payload_category = dict(
+        name="test_category",
+        description="test_description",
+        url="test_url"
+    )
+    payload_actor = dict(
+        name="test_actor",
+        age = 18,
+        description="test_description",
+    )
+    payload_genre = dict(
+        name="test_genre",
+        description="test_description",
+        url="test_url"
+    )
+    category = Category.objects.create(**payload_category)
+    actor = Actor.objects.create(**payload_actor)
+    genre = Genre.objects.create(**payload_genre)
+    return category, actor, genre
+
+
+@pytest.fixture
+def movie_creation(foreign_keys_handling):
+    category, actor, genre = foreign_keys_handling
+    movie = Movie.objects.create(
+        title="test",
+        tagline="test",
+        description="test",
+        poster="test",
+        year=2020,
+        country="test",
+        world_premiere="2020-01-01",
+        budget=100,
+        fees_in_usa=100,
+        fess_in_world=100,
+        category=category,
+        url="test",
+        draft=False
+    )
+    movie.directors.add(actor)
+    movie.actors.add(actor)
+
+    movie.genres.add(genre)
+    return movie
+

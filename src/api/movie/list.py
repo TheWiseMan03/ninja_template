@@ -4,7 +4,7 @@ from src.apps.movie.schemas.movie import (
     MovieListSchema,
     PaginatedMovieSchema,
 )
-from src.apps.movie.services.crud import crud_instance
+from src.apps.movie.services.crud import crud_instance_movie
 
 from src.apps.movie.permissions import IsStaffUser
 
@@ -19,8 +19,12 @@ async def handler(
     page: int = 1,
     size: int = 10,
 ):
+    """
+    movie list api
+    
+    """
     filter_args = filters.dict(exclude_unset=True)
 
-    qs = await crud_instance.get_list(**filter_args)
+    qs = await crud_instance_movie.get_list(**filter_args)
 
     return await paginate_response(qs, MovieListSchema, page, size)

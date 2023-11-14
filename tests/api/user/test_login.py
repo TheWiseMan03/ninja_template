@@ -1,19 +1,15 @@
 import pytest
 
-from src.apps.user.models import CustomUser
-
 
 @pytest.mark.django_db
-def test_login(client, url_name, user_factory):
+def test_login(client, url_name, created_user):
     payload = dict(
-        username=user_factory.username,
-        password=user_factory.password)
-    
-    print(payload)
+        username=created_user.username,
+        password="test"
+        )
 
     url = url_name(__file__)
     response = client.post(url, payload)
-    print(response.json())
 
     result = response.json()["data"]
     
