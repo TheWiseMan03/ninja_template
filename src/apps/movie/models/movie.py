@@ -63,7 +63,7 @@ class Movie(models.Model):
     actors = models.ManyToManyField(
         Actor, verbose_name="актеры", related_name="film_actor"
     )
-    genres = models.ManyToManyField(Genre, verbose_name="жанры")
+    genres = models.ManyToManyField(Genre, verbose_name="жанры", related_name="film_genre")
     world_premiere = models.DateField("Примьера в мире", default=date.today)
     budget = models.PositiveIntegerField(
         "Бюджет", default=0, help_text="указывать сумму в долларах"
@@ -75,7 +75,7 @@ class Movie(models.Model):
         "Сборы в мире", default=0, help_text="указывать сумму в долларах"
     )
     category = models.ForeignKey(
-        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
+        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True, related_name="film_category"
     )
     url = models.SlugField(max_length=130, unique=True)
     draft = models.BooleanField("Черновик", default=False)
@@ -98,7 +98,7 @@ class MovieShots(models.Model):
     description = models.TextField("Описание")
     image = models.ImageField("Изображение", upload_to="movie_shots/")
     movie = models.ForeignKey(
-        "movie.Movie", verbose_name="Фильм", on_delete=models.CASCADE
+        "movie.Movie", verbose_name="Фильм", on_delete=models.CASCADE, related_name="movie_shots"
     )
 
     def __str__(self):
@@ -128,7 +128,7 @@ class Rating(models.Model):
 
     ip = models.CharField("IP адрес", max_length=15)
     star = models.ForeignKey(
-        RatingStar, on_delete=models.CASCADE, verbose_name="звезда"
+        RatingStar, on_delete=models.CASCADE, verbose_name="звезда", related_name="rating_star"
     )
     movie = models.ForeignKey(
         Movie, on_delete=models.CASCADE, verbose_name="фильм", related_name="ratings"
